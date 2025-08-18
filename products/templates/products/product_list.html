@@ -1,0 +1,22 @@
+{% extends "products/base.html" %}
+{% block content %}
+<a href="{% url 'product_create' %}" class="btn btn-success mb-3">Add Product</a>
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p>Price: ${{ product.price }}</p>
+                <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary btn-sm">Details</a>
+                <a href="{% url 'product_update' product.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
