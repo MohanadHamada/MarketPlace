@@ -1,5 +1,5 @@
 from django.db import models
-from category.models import Category  # في الأعلى
+from category.models import Category
 
 
 class Product(models.Model):
