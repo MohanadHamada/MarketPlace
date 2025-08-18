@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import  DetailView, ListView, CreateView, UpdateView
+from django.views.generic import  DetailView, ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Category
@@ -25,4 +25,9 @@ class CategoryUpdateView(UpdateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category/category_form.html'
+    success_url = reverse_lazy('category:category_list')
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = 'category/category_confirm_delete.html'
     success_url = reverse_lazy('category:category_list')
