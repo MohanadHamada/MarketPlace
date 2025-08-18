@@ -9,4 +9,5 @@ urlpatterns = [
     path('', CategoryListView.as_view(), name='category_list'),
     path('create/', login_required(CategoryCreateView.as_view()), name='category_create'),
     path('edit/<int:pk>/', CategoryUpdateView.as_view(), name='category_edit'),
+    path('<int:pk>/delete/', CategoryDeleteView.as_view(), name='category_delete'), 
 ]
