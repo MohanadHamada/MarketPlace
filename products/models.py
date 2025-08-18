@@ -1,4 +1,6 @@
 from django.db import models
+from category.models import Category  # في الأعلى
+
 
 class Product(models.Model):
     code_num = models.CharField(max_length=100, unique=True)
@@ -9,6 +11,10 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     description = models.TextField()
+
+
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', null=True, blank=True)
+
 
     def __str__(self):
         return self.name
