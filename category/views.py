@@ -21,13 +21,13 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     template_name = 'category/category_form.html'
     success_url = reverse_lazy('category:category_list')
 
-class CategoryUpdateView(UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category/category_form.html'
     success_url = reverse_lazy('category:category_list')
 
-class CategoryDeleteView(DeleteView):
+class CategoryDeleteView(LoginRequiredMixin, DeleteView):
     model = Category
     template_name = 'category/category_confirm_delete.html'
     success_url = reverse_lazy('category:category_list')
