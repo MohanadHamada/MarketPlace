@@ -8,4 +8,5 @@ urlpatterns = [
     path('<int:pk>/', CategoryDetailView.as_view(), name='category_detail'),
     path('', CategoryListView.as_view(), name='category_list'),
     path('create/', login_required(CategoryCreateView.as_view()), name='category_create'),
+    path('edit/<int:pk>/', CategoryUpdateView.as_view(), name='category_edit'),
 ]
