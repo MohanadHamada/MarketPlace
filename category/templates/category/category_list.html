@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Categories</h2>
-<a href="{% url 'category_create' %}" class="btn btn-success">Add New Category</a>
+<a href="{% url 'category:category_create' %}" class="btn btn-success">Add New Category</a>
 <div class="row">
   {% for category in object_list %}
   <div class="col-md-4">
@@ -12,7 +12,7 @@
       <div class="card-body">
         <h5>{{ category.name }}</h5>
         <p>{{ category.description|truncatewords:10 }}</p>
-        <a href="{% url 'category_detail' category.pk %}" class="btn btn-secondary">View</a>
+        <a href="{% url 'category:category_detail' category.pk %}" class="btn btn-secondary">View</a>
       </div>
     </div>
   </div>
