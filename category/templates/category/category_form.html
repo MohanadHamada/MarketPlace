@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
   <div class="container">
-    <h2>Add New Category</h2>
+    <h2>{% if object %}Edit Category{% else %}Add New Category{% endif %}</h2>
+    
     <form method="post" enctype="multipart/form-data" class="mt-3">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Create</button>
+      
+      <button type="submit" class="btn btn-primary">
+        {% if object %}Update{% else %}Create{% endif %}
+      </button>
+      
       <a href="{% url 'category:category_list' %}" class="btn btn-secondary">Cancel</a>
     </form>
   </div>
