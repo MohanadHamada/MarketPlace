@@ -1,0 +1,20 @@
+{% extends "/home/mohand/marketPlace/products/templates/products/base.html" %}
+{% block content %}
+<h2>Categories</h2>
+<div class="row">
+  {% for category in object_list %}
+  <div class="col-md-4">
+    <div class="card mb-3">
+      {% if category.image %}
+      <img src="{{ category.image.url }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+      {% endif %}
+      <div class="card-body">
+        <h5>{{ category.name }}</h5>
+        <p>{{ category.description|truncatewords:10 }}</p>
+        <a href="{% url 'category_detail' category.pk %}" class="btn btn-secondary">View</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
