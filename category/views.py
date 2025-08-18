@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import  DetailView, ListView, CreateView
+from django.views.generic import  DetailView, ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Category
@@ -16,6 +16,12 @@ class CategoryListView(ListView):
     context_object_name = 'categories'
 
 class CategoryCreateView(LoginRequiredMixin, CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'category/category_form.html'
+    success_url = reverse_lazy('category:category_list')
+
+class CategoryUpdateView(UpdateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category/category_form.html'
